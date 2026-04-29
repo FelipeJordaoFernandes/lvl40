@@ -17,17 +17,19 @@
 body {
   margin: 0;
   min-height: 100vh;
+  min-height: 100dvh;
   font-family: "Press Start 2P", cursive;
   color: var(--pixel-white);
   background:
     radial-gradient(circle at top, rgba(67, 126, 255, 0.28), transparent 30%),
     linear-gradient(180deg, var(--bg-top), var(--bg-bottom));
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .scene {
   position: relative;
   min-height: 100vh;
+  min-height: 100dvh;
   display: grid;
   place-items: center;
   padding: 24px;
@@ -187,6 +189,8 @@ body {
 .burst-top { margin-top: -88px; }
 
 .levelup {
+  width: 100%;
+  max-width: 680px;
   text-align: center;
   opacity: 0;
   transform: translateY(18px) scale(0.92);
@@ -239,6 +243,7 @@ body {
 
 .levelup-subtitle {
   max-width: 600px;
+  margin-inline: auto;
   font-size: clamp(0.65rem, 1.7vw, 0.9rem);
   line-height: 1.9;
   color: #dce9ff;
@@ -377,10 +382,15 @@ body.is-playing .intro-card {
 }
 
 @media (max-width: 640px) {
+  .scene {
+    padding: 0;
+  }
+
   .intro-card {
-    min-height: 100vh;
+    min-height: 100dvh;
     width: 100vw;
-    padding-inline: 18px;
+    padding: 28px 16px 24px;
+    gap: 18px;
     border-width: 0;
   }
 
@@ -389,15 +399,76 @@ body.is-playing .intro-card {
   }
 
   .pokeball-wrap {
-    min-height: 200px;
+    min-height: 180px;
   }
 
   .pokemon-title {
+    margin: 14px 0 18px;
+    font-size: clamp(2.2rem, 15vw, 4.2rem);
+    letter-spacing: 0.02em;
     -webkit-text-stroke: 3px var(--pokemon-outline);
     text-shadow:
       0 4px 0 var(--pokemon-outline),
       4px 5px 0 rgba(10, 20, 48, 0.65);
   }
+
+  .levelup-label {
+    font-size: clamp(0.58rem, 3.2vw, 0.8rem);
+    line-height: 1.6;
+  }
+
+  .birthday-message {
+    margin-bottom: 14px;
+    font-size: clamp(0.78rem, 4vw, 1.05rem);
+    letter-spacing: 0.14em;
+    line-height: 1.6;
+  }
+
+  .levelup-subtitle {
+    max-width: 32ch;
+    font-size: clamp(0.56rem, 3vw, 0.72rem);
+    line-height: 1.8;
+  }
+}
+
+@media (max-width: 420px) {
+  .intro-card {
+    padding: 24px 12px 20px;
+  }
+
+  .pokeball {
+    width: min(56vw, 220px);
+  }
+
+  .pokeball-wrap {
+    min-height: 160px;
+  }
+
+  .ball-half {
+    border-width: 5px;
+  }
+
+  .ball-band {
+    top: calc(50% - 11px);
+    height: 22px;
+  }
+
+  .ball-center {
+    width: 52px;
+    height: 52px;
+    border-width: 5px;
+    box-shadow: 0 0 0 5px #fff;
+  }
+
+  .ball-center::after {
+    width: 14px;
+    height: 14px;
+    box-shadow: 0 0 0 3px #d8e1fc;
+  }
+
+  .burst-left { margin-left: -74px; }
+  .burst-right { margin-left: 74px; }
+  .burst-top { margin-top: -72px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
